@@ -37,7 +37,6 @@ public class ExamActivity extends Form implements HandlesEventDispatching {
      
      promptLabel = new Label(line1, "Enter a number:");
      inputBox = new TextBox(line1);
-     inputBox.NumbersOnly(true);
    
      incButton = new Button(line2,"Increment it:"); 
      
