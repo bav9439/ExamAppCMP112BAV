@@ -1,7 +1,7 @@
 
 package edu.saintjoe.cs.brianc.examtwo;
 
-
+//// Import directives tell Eclipse which components you intend to use
 import com.google.devtools.simple.runtime.components.Component;
 import com.google.devtools.simple.runtime.components.HandlesEventDispatching;
 import com.google.devtools.simple.runtime.components.android.Form;
@@ -14,54 +14,65 @@ import com.google.devtools.simple.runtime.components.android.AccelerometerSensor
 
 import com.google.devtools.simple.runtime.events.EventDispatcher;
 
+//
+//This is the only class file for our app
 public class ExamActivity extends Form implements HandlesEventDispatching {
+	
+	//The name of the project is Exam Activity which cannot be changed
+}
 
+	//These objects are like "components" of App Inventor
 	private HorizontalArrangement line1, line2, line3, line4, line5;
 	private Button incButton;
 	private Label resultLabel;
 	private Label promptLabel;
 	private TextBox inputBox;
-	private Label outputLabel;
 	int temp;
 	
-
+	// // Java Bridger apps use $define() in place of main()
  void $define() {
- 	
+	 
+	 //"This" is an activity object
      this.BackgroundColor(COLOR_WHITE);
      
+     //Create containers for widgets
      line1 = new HorizontalArrangement(this);
      line2 = new HorizontalArrangement(this);
      line3 = new HorizontalArrangement(this);
-     line4 = new HorizontalArrangement(this);
 
-     
+     //Instructions on what to do to reach resultlabel; user interface
      promptLabel = new Label(line1, "Enter a number:");
      inputBox = new TextBox(line1);
    
-     incButton = new Button(line2,"Increment it:"); 
+     //Instructions on what to do with the value placed into the prompt label
+     incButton = new Button(line2,"Double it:"); 
      
      resultLabel = new Label(line3,"");
-     
-     outputLabel = new Label(line4, "");
  
-     EventDispatcher.registerEventForDelegation(this, "ButtonClick", "Click");
+     (this, "ButtonClick", "Click");
     
- } 
+ } //end define() 
  @Override
- public boolean dispatchEvent(Component component, String id, String eventName,
+ 
+ //This method is called when an event happens
+ public boolean (Component component, String id, String eventName,
          Object[] args) {
  	
+	 	// The "Blocks" part of APP Inventor
 	    if (component.equals(incButton) && eventName.equals("Click")){
 	    	temp = Integer.parseInt(inputBox.Text());
-	    	temp += 1;
+	    	temp *= 2;
 	    	resultLabel.Text(String.valueOf(temp));
 	        return true;
 	     } 
 	    
-	    if (component.equals(resultLabel) && eventName.equals("Click")) {
+	    //parameter
+	    if (component.equals(resultLabel) eventName.equals("Click")) {
 	    	outputLabel.Text("You pushed me!!");
+	    	
+	    	//This line is required to end the event
 	    	return true;
-	    }
-    return true;
-	} 
-} 
+	    	
+	    } //end event
+	    
+ }	    //End activity class
